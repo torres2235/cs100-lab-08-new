@@ -14,6 +14,20 @@ class Div : public Base {
 		virtual double evaluate() { if (val2->evaluate() == 0) { return zero; } return val1->evaluate() / val2->evaluate(); }
 		virtual std::string stringify() { if (val2->evaluate() == 0) {return "0";} return val1->stringify() + "/" + val2->stringify(); }
 
+		/*new Iterator functions for lab-08*/
+                virtual Iterator* create_iterator() {
+                	Iterator* newIt = new BinaryIterator(this);
+
+                	return newIt;
+                }
+
+                virtual Base* get_left() {
+                        return val1;
+                }
+
+                virtual Base* get_right() {
+                        return val2;
+                }
 };
 
 #endif //__DIV_HPP__
